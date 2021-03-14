@@ -1,5 +1,5 @@
 import FirstBackground from './bg1.jpg';
-import SecondBackground from './bg3.jpg';
+import SecondBackground from './bg4.jpg';
 
 const BackgroundImage = { FirstBackground, SecondBackground };
 

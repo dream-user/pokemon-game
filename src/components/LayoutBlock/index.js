@@ -1,27 +1,32 @@
 import s from './style.module.css';
 
-const LayoutBlock = ({ title, descr, urlBg, colorBg }) => {
-    const backgroundProp = urlBg ? `url(${urlBg})` : colorBg;
-    const backgroundStyle = {
-        background: `${backgroundProp}`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'bottom'
-    };
+const LayoutBlock = ({ id, title, descr, urlBg, colorBg, colorTitle, children }) => {
+    const sectionStyle = {};
+    const colTitle = { color: colorTitle };
+
+    if (urlBg) {
+        sectionStyle.backgroundImage = `url(${urlBg})`;
+    }
+
+    if (colorBg) {
+        sectionStyle.backgroundColor = colorBg;
+    }
 
     return (
-        <section style={backgroundStyle} className={s.root}>
+        <section id={id} style={sectionStyle} className={s.root}>
             <div className={s.wrapper}>
                 <article>
                     <div className={s.title}>
                         {title && (
-                            <h3>{title}</h3>
+                            <h3 style={colTitle}>{title}</h3>
                         )}
                         <span className={s.separator}></span>
                     </div>
-                    <div className="desc full">
+                    <div className={[s.desc, s.full].join(' ')}>
                         {descr && (
                             <p>{descr}</p>
                         )}
+                        {children}
                     </div>
                 </article>
             </div>
